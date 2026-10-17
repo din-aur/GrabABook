@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
 
-        if(other.CompareTag("Player") || other.CompareTag("Deadzone") || other.CompareTag("Background"))
+        if(other.CompareTag("Player") || other.CompareTag("Deadzone") || other.CompareTag("Target"))
         {
             Destroy(this.gameObject);
         }
