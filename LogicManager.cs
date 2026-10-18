@@ -95,7 +95,7 @@ public class LogicManager : MonoBehaviour
                 }
                 if(CountMinimart !=0)
                 {
-                    pointInterpretation.text = "Have you ever crossing a collapsing bridge to go to school?";
+                    pointInterpretation.text = "Can you build" + " " + CountMinimart.ToString() + " " + "schools instead?";
                 }
             } else if (PlayerPoint != 0)
             {
@@ -103,21 +103,32 @@ public class LogicManager : MonoBehaviour
                 {
                     pointInterpretation.text = "Who are you?";
                 }
-                if(PlayerPoint >= CountTextbook && CountTextbook > CountLunchbox && CountTextbook > CountMinimart && (CountLunchbox >= CountMinimart || CountLunchbox <= CountMinimart))
+                else if(CountTextbook > CountLunchbox && CountTextbook > CountMinimart)
                 {
-                    pointInterpretation.text = "You supported" + " " + CountTextbook.ToString() + " " + "students. Let's continue! They are our future leaders!";
+                    if(CountLunchbox > CountMinimart)
+                    {
+                        pointInterpretation.text = "You have supported" + " " + CountTextbook.ToString() + " " + "students, while" + " " + CountLunchbox.ToString() + " " + "student is seeking a doctor.";
+                    } else
+                    {
+                        pointInterpretation.text = "You have supported" + " " + CountTextbook.ToString() + " " + "students, while" + " " + CountMinimart.ToString() + " " + "student is crossing a river to go to school.";
+                    }
                 }
-                if(PlayerPoint >= CountLunchbox && CountLunchbox > CountTextbook && CountLunchbox > CountMinimart && (CountTextbook >= CountMinimart || CountTextbook <= CountMinimart))
+                else if(CountMinimart > CountTextbook && CountMinimart > CountLunchbox)
                 {
-                    pointInterpretation.text = "Hopefully" + " " + CountLunchbox.ToString() + " " + "student have a strong stomach. They still have homeworks!";
-                }
-                if(PlayerPoint >= CountMinimart && CountMinimart > CountTextbook && CountMinimart > CountLunchbox && (CountTextbook >= CountLunchbox || CountTextbook <= CountLunchbox))
+                    if(CountLunchbox > CountTextbook)
+                    {
+                        pointInterpretation.text = "It's definitely hard to cross a collapsing bridge with a stocmachache.";
+                    } else
+                    {
+                        pointInterpretation.text = "How if you renovate" + " " + CountMinimart.ToString() + " " + "bridges instead?";
+                    }
+                } else
                 {
-                    pointInterpretation.text = "Hmm, you actually have power to build" + " " + CountMinimart.ToString() + " " + "schools instead, right?";
+                    pointInterpretation.text = "You have" + " " + PlayerPoint.ToString() + " " + "opportunities, but what are you doing?";
                 }
             }else
             {
-                pointInterpretation.text = "What are you doing?";
+                pointInterpretation.text = "It's hard to say...";
             }
             EndGame.SetActive(true);
         }
